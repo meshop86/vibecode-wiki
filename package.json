@@ -1,0 +1,65 @@
+{
+  "name": "vibecode-wiki",
+  "version": "1.0.0",
+  "description": "Từ điển thuật ngữ lập trình dành cho Vibe Coders — 183+ terms, offline, Electron desktop app",
+  "main": "src/main/index.cjs",
+  "author": "Lương Xuân Hoà <0797899666>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:main\" \"npm run dev:popup\" \"npm run electron\"",
+    "dev:main": "vite --config vite.main.config.js",
+    "dev:popup": "vite --config vite.popup.config.js",
+    "electron": "wait-on tcp:5173 tcp:5174 && env -u ELECTRON_RUN_AS_NODE electron .",
+    "build": "npm run build:main && npm run build:popup",
+    "build:main": "vite build --config vite.main.config.js",
+    "build:popup": "vite build --config vite.popup.config.js",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.vibecode.wiki",
+    "productName": "VibecodeWiki",
+    "mac": {
+      "icon": "public/icon.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "icon": "public/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "files": [
+      "dist/**/*",
+      "src/main/**/*",
+      "src/data/**/*",
+      "public/**/*"
+    ],
+    "extraFiles": [
+      {
+        "from": "src/main/preload.js",
+        "to": "src/main/preload.js"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "src/data",
+        "to": "data"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^9.2.1",
+    "electron": "^28.3.3",
+    "electron-builder": "^26.8.1",
+    "vite": "^8.0.8",
+    "wait-on": "^9.0.5"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}
