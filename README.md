@@ -38,9 +38,9 @@ Tra cứu nhanh 183+ thuật ngữ kỹ thuật bằng tiếng Việt — offlin
     <td align="center"><b>Popup tra cứu</b></td>
   </tr>
   <tr>
-    <td><img src="docs/screenshots/main.png" width="340"/></td>
+    <td><img src="docs/screenshots/popup.png" width="340"/></td>
     <td><img src="docs/screenshots/search.png" width="280"/></td>
-    <td><img src="docs/screenshots/popup.png" width="260"/></td>
+    <td><img src="docs/screenshots/main.png" width="260"/></td>
   </tr>
 </table>
 
